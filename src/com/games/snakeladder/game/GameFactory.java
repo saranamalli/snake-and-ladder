@@ -1,6 +1,7 @@
 package game;
 
 import java.util.List;
+import game.state.GameStates;
 import players.Player;
 
 public class GameFactory {
@@ -30,6 +31,7 @@ public class GameFactory {
                 .boardWidth(10)
                 .boardHeight(10)
                 .players(players)
+                .gameState(GameStates.WAITING_FOR_PLAYERS)
                 .build();
     }
 }

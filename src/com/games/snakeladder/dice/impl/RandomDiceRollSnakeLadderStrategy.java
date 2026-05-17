@@ -12,7 +12,7 @@ public class RandomDiceRollSnakeLadderStrategy implements DiceRollSnakeLadderStr
     @Override
     public int roll(String username) {
         System.out.println(username + ", Press any key to roll a dice.");
-        // sc.nextLine();
+        sc.nextLine();
         return (int) (Math.random() * 6);
     }
 }

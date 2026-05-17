@@ -1,10 +1,5 @@
 package players;
 
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 import dice.DiceRollSnakeLadderStrategy;
 import dice.Move;
 import dice.impl.SnakeLadderMove;

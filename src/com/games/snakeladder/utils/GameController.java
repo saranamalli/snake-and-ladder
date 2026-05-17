@@ -19,6 +19,7 @@ public class GameController {
 
     public void startGame() {
         game.initialize();
+        game.startGame();
         while (!game.isOver()) {
             Player player = game.getPlayerWithTurn();
             Move move;

@@ -29,7 +29,7 @@ public class SnakeLadderGame implements Game {
     List<SnakeLadderGameElement> elements;
 
     private SnakeLadderGame(Builder builder) {
-        this.gameState = GameStates.WAITING_FOR_PLAYERS;
+        this.gameState = builder.gameState;
         this.snakesCount = builder.snakes;
         this.laddersCount = builder.ladders;
         this.boardWidth = builder.boardWidth;
@@ -103,6 +103,7 @@ public class SnakeLadderGame implements Game {
     public static class Builder {
         private int snakes, ladders, boardWidth, boardHeight;
         private List<Player> players;
+        private GameStates gameState;
 
         public Builder() {
         }
@@ -129,6 +130,11 @@ public class SnakeLadderGame implements Game {
 
         public Builder players(List<Player> players) {
             this.players = players;
+            return this;
+        }
+
+        public Builder gameState(GameStates gameState) {
+            this.gameState = gameState;
             return this;
         }
 
