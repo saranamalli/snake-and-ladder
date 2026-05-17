@@ -8,6 +8,23 @@ import dice.DiceRollSnakeLadderStrategy;
 public class RandomDiceRollSnakeLadderStrategy implements DiceRollSnakeLadderStrategy {
 
     Scanner sc = new Scanner(System.in);
+    private static RandomDiceRollSnakeLadderStrategy INSTANCE;
+
+    private RandomDiceRollSnakeLadderStrategy() {
+        if(INSTANCE != null)
+            throw new RuntimeException("Please use getInstance to get object.");
+    }
+
+    public RandomDiceRollSnakeLadderStrategy getInstance() {
+        if(INSTANCE == null) {
+            synchronized(RandomDiceRollSnakeLadderStrategy.class) {
+                if(INSTANCE == null) {
+                    INSTANCE = new RandomDiceRollSnakeLadderStrategy();
+                }
+            } 
+        }
+        return INSTANCE;
+    }
 
     @Override
     public int roll(String username) {
