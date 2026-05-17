@@ -13,7 +13,7 @@ public class UserInputDiceRollSnakeLadderStrategy implements DiceRollSnakeLadder
             throw new RuntimeException("Use getInstance method to obtain the instance.");
     }
 
-    public UserInputDiceRollSnakeLadderStrategy getInstance() {
+    public static UserInputDiceRollSnakeLadderStrategy getInstance() {
         if(singleton_instance == null) {
             synchronized(UserInputDiceRollSnakeLadderStrategy.class) {
                 if(singleton_instance == null) {

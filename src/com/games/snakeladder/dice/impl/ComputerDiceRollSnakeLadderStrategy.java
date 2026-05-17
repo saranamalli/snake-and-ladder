@@ -7,7 +7,7 @@ public class ComputerDiceRollSnakeLadderStrategy implements DiceRollSnakeLadderS
 
     private ComputerDiceRollSnakeLadderStrategy() {}
 
-    public ComputerDiceRollSnakeLadderStrategy getInstance() {
+    public static ComputerDiceRollSnakeLadderStrategy getInstance() {
         if(singleton_instance == null) {
             synchronized(ComputerDiceRollSnakeLadderStrategy.class) {
                 if(singleton_instance == null) {

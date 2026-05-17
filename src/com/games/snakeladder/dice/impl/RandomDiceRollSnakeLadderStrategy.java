@@ -15,7 +15,7 @@ public class RandomDiceRollSnakeLadderStrategy implements DiceRollSnakeLadderStr
             throw new RuntimeException("Please use getInstance to get object.");
     }
 
-    public RandomDiceRollSnakeLadderStrategy getInstance() {
+    public static RandomDiceRollSnakeLadderStrategy getInstance() {
         if(INSTANCE == null) {
             synchronized(RandomDiceRollSnakeLadderStrategy.class) {
                 if(INSTANCE == null) {
