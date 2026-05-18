@@ -27,8 +27,11 @@ public class LadderFactory {
 
     // What is the need of Singleton, a static method would suffice.
     public SnakeLadderGameElement getRandomLadder(int boardWidth, int boardHeight) {
-        Point start = Utils.generatePoint(boardWidth, boardHeight);
-        Point end = Utils.generatePoint(start.getX(), start.getY(), boardWidth, boardHeight);
+        Point start = Utils.generatePoint(0, 0, boardWidth, boardHeight);
+        Point end = null;
+        do {
+            end = Utils.generatePoint((int)start.getX(), (int)start.getY(), boardWidth, boardHeight);
+        } while(start.equals(end));
         return new Ladder(start, end);
     }
 }

@@ -3,20 +3,17 @@ package utils;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 import elements.SnakeLadderGameElement;
 
 public class Utils {
 
-    public static Point generatePoint(double maxX, double maxY) {
-        return generatePoint(0, 0, maxX, maxY);
-    }
-
-    public static Point generatePoint(double startX, double startY, double maxX, double maxY) {
+    public static Point generatePoint(int startX, int startY, int maxX, int maxY) {
         return new Point(
-                (int) (startX + Math.random() * (maxX - startX)),
-                (int) (startY + Math.random() * (maxY - startY))
+                ThreadLocalRandom.current().nextInt(startX, maxX),
+                ThreadLocalRandom.current().nextInt(startY, maxY)
         );
     }
 
