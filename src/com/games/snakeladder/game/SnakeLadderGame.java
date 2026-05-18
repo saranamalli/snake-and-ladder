@@ -162,18 +162,18 @@ public class SnakeLadderGame implements Game {
             if(elem instanceof Snake snake) {
                 boardCellTemp = result[(int) snake.getHead().getY()][(int) snake.getHead().getX()];
                 bracketIndexTemp = boardCellTemp.toString().lastIndexOf(" (");
-                result[(int) snake.getHead().getY()][(int) snake.getHead().getX()] = new StringBuffer(boardCellTemp).insert(bracketIndexTemp, " S"+i+"-H");
+                result[(int) snake.getHead().getY()][(int) snake.getHead().getX()] = new StringBuffer(boardCellTemp).insert(bracketIndexTemp, " 🐍 "+i);
                 boardCellTemp = result[(int) snake.getTail().getY()][(int) snake.getTail().getX()];
                 bracketIndexTemp = boardCellTemp.toString().lastIndexOf(" (");
-                result[(int) snake.getTail().getY()][(int) snake.getTail().getX()] = new StringBuffer(boardCellTemp).insert(bracketIndexTemp, " S"+i+"-T");
+                result[(int) snake.getTail().getY()][(int) snake.getTail().getX()] = new StringBuffer(boardCellTemp).insert(bracketIndexTemp, " 🤕 "+i);
                 maxLengthOfCellString = Math.max(maxLengthOfCellString, result[(int) snake.getTail().getY()][(int) snake.getTail().getX()].length());
             } else if(elem instanceof Ladder ladder) {
                 boardCellTemp = result[(int) ladder.getStart().getY()][(int) ladder.getStart().getX()] ;
                 bracketIndexTemp = boardCellTemp.toString().lastIndexOf(" (");
-                result[(int) ladder.getStart().getY()][(int) ladder.getStart().getX()] = new StringBuffer(boardCellTemp).insert(bracketIndexTemp, " L"+i+"-S");
+                result[(int) ladder.getStart().getY()][(int) ladder.getStart().getX()] = new StringBuffer(boardCellTemp).insert(bracketIndexTemp, " 🪜 "+i);
                 boardCellTemp = result[(int) ladder.getEnd().getY()][(int) ladder.getEnd().getX()];
                 bracketIndexTemp = boardCellTemp.toString().lastIndexOf(" (");
-                result[(int) ladder.getEnd().getY()][(int) ladder.getEnd().getX()] = new StringBuffer(boardCellTemp).insert(bracketIndexTemp, " L"+i+"-E");
+                result[(int) ladder.getEnd().getY()][(int) ladder.getEnd().getX()] = new StringBuffer(boardCellTemp).insert(bracketIndexTemp, " 😃 "+i);
                 maxLengthOfCellString = Math.max(maxLengthOfCellString, result[(int) ladder.getEnd().getY()][(int) ladder.getEnd().getX()].length());
             }
         }

@@ -46,14 +46,10 @@ public class GameStartedState implements State {
         SnakeLadderMove move = (SnakeLadderMove) obj;
         Point location = game.getPlayerLocations().get(game.getPlayerWithTurn()); // current player's location
         return (location.getY() != game.getBoardHeight() - 1)
-                || (location.getX() < game.getBoardWidth() - move.getRoll());
+                || (location.getX() + move.getRoll() <= game.getBoardWidth());
     }
 
     public void makeMove(Move move, SnakeLadderGame game) {
-        if (!isMoveValid(move, game)) {
-            System.out.println("Invalid move");
-            return;
-        }
         System.out.println("Making the move " + move.toString());
         int roll = ((SnakeLadderMove) move).getRoll();
         Player player = game.getPlayerWithTurn();
@@ -62,28 +58,34 @@ public class GameStartedState implements State {
                 (int) ((location.getX() + roll) % game.getBoardWidth()),
                 (int) (location.getY() + ((location.getX() + roll) >= game.getBoardWidth() ? 1 : 0))
         );
-        // System.out.println("Location before checking Snakes / Ladders: "+newLocation);
-        newLocation = updateLocationBySnakesOrLadders(newLocation, game);
-        // System.out.println("Location after checking Snakes / Ladders: "+newLocation);
-        game.getPlayerLocations().put(player, newLocation);
-        // System.out.println(playerLocations);
-        game.printBoardState();
-        if (checkPlayerAtWinningCell(newLocation, game)) {
-            // the current player has won the game!
-            game.setGameState(GameStates.ENDED);;
-        } else {
-            // make sure that the turn is advanced
-            game.setPlayerWithTurn(game.getTurnTracker().getNext());
-        }
         // notify all my players
         for (Player p : game.getPlayers()) {
             p.notifyMoveMade(move);
         }
+        boolean moveValidBool = true;
+        if (!isMoveValid(move, game)) {
+            System.out.println("Invalid move");
+            moveValidBool = false;
+        }
+        if (isPlayerWinning(newLocation, game)) {
+            // the current player has won the game!
+            game.setGameState(GameStates.ENDED);
+            return;
+        }
+        if(moveValidBool) {
+            // System.out.println("Location before checking Snakes / Ladders: "+newLocation);
+            newLocation = updateLocationBySnakesOrLadders(newLocation, game);
+            // System.out.println("Location after checking Snakes / Ladders: "+newLocation);
+            game.getPlayerLocations().put(player, newLocation);
+        }
+        game.printBoardState();
+        // make sure that the turn is advanced
+        game.setPlayerWithTurn(game.getTurnTracker().getNext());
     }
 
-    private boolean checkPlayerAtWinningCell(Point playerLocation, SnakeLadderGame game) {
-        return playerLocation.getX() == game.getBoardWidth() - 1
-                && playerLocation.getY() == game.getBoardHeight()-1;
+    private boolean isPlayerWinning(Point playerLocation, SnakeLadderGame game) {
+        return playerLocation.getX() == 0
+                && playerLocation.getY() == game.getBoardHeight();
     }
 
     private Point updateLocationBySnakesOrLadders(Point location, SnakeLadderGame game) {
