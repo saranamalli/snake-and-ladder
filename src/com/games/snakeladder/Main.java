@@ -24,7 +24,7 @@ public class Main {
         DiceRollSnakeLadderStrategy strategy = RandomDiceRollSnakeLadderStrategy.getInstance();
         players.add(new HumanPlayer(salil, "Sal", strategy));
         players.add(new HumanPlayer(rahul, "Rah", strategy));
-        players.add(new ComputerPlayer("Bot1", "green", ComputerDiceRollSnakeLadderStrategy.getInstance()));
+        players.add(new ComputerPlayer("Bot1", "Com", ComputerDiceRollSnakeLadderStrategy.getInstance()));
         Game game = GameFactory.getInstance().createClassicSnakeLadder(players);
 
         GameController controller = new GameController(game);

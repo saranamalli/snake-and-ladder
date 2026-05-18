@@ -25,8 +25,6 @@ public class ComputerPlayer implements Player {
     public void notifyMoveMade(Move move) {
 
     }
-
-
     @Override
     public String toString() {
         return "hi, I'm Bot " + name;
@@ -37,4 +35,13 @@ public class ComputerPlayer implements Player {
         return this.name;
     }
 
+    @Override
+    public String getSymbol() {
+        String sym = this.symbol != null && !this.symbol.isBlank() ? this.symbol : getName().substring(0, Math.min(2, getName().length()));
+        return sym;
+    }
+
+    public DiceRollSnakeLadderStrategy getStrategy() {
+        return strategy;
+    }
 }

@@ -11,8 +11,8 @@ public class GameEvent {
     }
 
     public void dispatchEvent(GameEventData eventData) {
-        for (GameEventHandler hander : handlers) {
-            hander.handleEvent(eventData);
+        for (GameEventHandler handler : handlers) {
+            handler.handleEvent(eventData);
         }
     }
 }

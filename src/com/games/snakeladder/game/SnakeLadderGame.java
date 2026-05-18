@@ -177,14 +177,19 @@ public class SnakeLadderGame implements Game {
                 maxLengthOfCellString = Math.max(maxLengthOfCellString, result[(int) ladder.getEnd().getY()][(int) ladder.getEnd().getX()].length());
             }
         }
-
+        
+        Player currPlayer;
+        Point cuurPlayerLocation;
         for(Entry<Player, Point> playerLocation: playerLocations.entrySet()) {
-            StringBuffer boardCell = result[(int) playerLocation.getValue().getY()][(int) playerLocation.getValue().getX()];
+            currPlayer = playerLocation.getKey();
+            cuurPlayerLocation = playerLocation.getValue();
+            StringBuffer boardCell = result[(int) cuurPlayerLocation.getY()][(int) cuurPlayerLocation.getX()];
             int bracketIndex = boardCell.toString().lastIndexOf("(")+1;
-            String nameToInsert = playerLocation.getKey().getName().substring(0, Math.min(2, playerLocation.getKey().getName().length())) + ", ";
-            result[(int) playerLocation.getValue().getY()][(int) playerLocation.getValue().getX()] = new StringBuffer(boardCell).insert(bracketIndex, nameToInsert);
-            System.out.println("Player Location: X: "+ playerLocation.getValue().getX()+"Y: "+playerLocation.getValue().getY()+result[(int) playerLocation.getValue().getY()][(int) playerLocation.getValue().getX()]);
-            maxLengthOfCellString = Math.max(maxLengthOfCellString, result[(int) playerLocation.getValue().getY()][(int) playerLocation.getValue().getX()].length());
+            String nameToInsert = currPlayer.getSymbol()
+             + ", ";
+            result[(int) cuurPlayerLocation.getY()][(int) cuurPlayerLocation.getX()] = new StringBuffer(boardCell).insert(bracketIndex, nameToInsert);
+            System.out.println("Player Location: X: "+ cuurPlayerLocation.getX()+"Y: "+cuurPlayerLocation.getY()+result[(int) cuurPlayerLocation.getY()][(int) cuurPlayerLocation.getX()]);
+            maxLengthOfCellString = Math.max(maxLengthOfCellString, result[(int) cuurPlayerLocation.getY()][(int) cuurPlayerLocation.getX()].length());
         }
 
         // Print Board

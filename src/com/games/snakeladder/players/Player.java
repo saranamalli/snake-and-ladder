@@ -8,4 +8,6 @@ public interface Player {
     void notifyMoveMade(Move move);
 
     String getName();
+
+    String getSymbol();
 }
