@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import dice.DiceRollSnakeLadderStrategy;
 import dice.impl.ComputerDiceRollSnakeLadderStrategy;
 import dice.impl.RandomDiceRollSnakeLadderStrategy;
 import game.Game;
@@ -21,11 +20,10 @@ public class Main {
         Audience virendra = new Audience("Virendra");
 
         List<Player> players = new ArrayList<>();
-        DiceRollSnakeLadderStrategy strategy = RandomDiceRollSnakeLadderStrategy.getInstance();
-        players.add(new HumanPlayer(salil, "Sal", strategy));
-        players.add(new HumanPlayer(rahul, "Rah", strategy));
+        players.add(new HumanPlayer(salil, "Sal", RandomDiceRollSnakeLadderStrategy.getInstance()));
+        players.add(new HumanPlayer(rahul, "Rah", RandomDiceRollSnakeLadderStrategy.getInstance()));
         players.add(new ComputerPlayer("Bot1", "Com", ComputerDiceRollSnakeLadderStrategy.getInstance()));
-        Game game = GameFactory.getInstance().createClassicSnakeLadder(players);
+        Game game = GameFactory.getInstance().createQuickSnakeLadder(players);
 
         GameController controller = new GameController(game);
         controller.addAudience(swarup);

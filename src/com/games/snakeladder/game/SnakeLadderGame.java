@@ -188,7 +188,7 @@ public class SnakeLadderGame implements Game {
             String nameToInsert = currPlayer.getSymbol()
              + ", ";
             result[(int) cuurPlayerLocation.getY()][(int) cuurPlayerLocation.getX()] = new StringBuffer(boardCell).insert(bracketIndex, nameToInsert);
-            System.out.println("Player Location: X: "+ cuurPlayerLocation.getX()+"Y: "+cuurPlayerLocation.getY()+result[(int) cuurPlayerLocation.getY()][(int) cuurPlayerLocation.getX()]);
+            System.out.println(currPlayer.getName()+" Location: X: "+ cuurPlayerLocation.getX()+" Y: "+cuurPlayerLocation.getY());
             maxLengthOfCellString = Math.max(maxLengthOfCellString, result[(int) cuurPlayerLocation.getY()][(int) cuurPlayerLocation.getX()].length());
         }
 
